@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,17 +8,22 @@
 :root {
     --mainBlue : #5964E0;
     --greyColor : #f4f8f8;
+    --darkGrey :  #6E8098;
+    --fontFamily: 'Kumbh Sans', sans-serif;
+    --blackFont: #19202D;
 }
+
 
 body {
     height: 80vh;
     background-color: var(--greyColor);
+    font-family: var(--fontFamily);
 }
 
 .top-bg {
     background-image: url("./assets/mobile/bg-pattern-header.svg"); /* The image used */
     background-color: #5964E0; /* Used if the image is unavailable */
-    height: 130px; /* You must set a specified height */
+    height: 140px; /* You must set a specified height */
     width: 100%;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -29,21 +35,28 @@ body {
 }
 
 .top-bg>div {
-    padding: 2rem 1rem 0;
+    padding-top: 2rem;
     justify-content: space-between;
     align-items: center;
+    margin: auto;
+    width: 85%;
 }
-
 
 .input-wrap {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #fff;
-    width: 85vw;
+    width: 85%;
     height: 5rem;
     margin: -2.5rem auto 0;  
     border-radius: 5px;
+}
+
+.search-input::placeholder {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--blackFont);
 }
 
 .search-input {
@@ -55,9 +68,7 @@ body {
 .search-wrap {
     width: 3rem;
     height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 1.5rem;
     border-radius: 5px;
     background-color: var(--mainBlue);
 }
@@ -66,3 +77,51 @@ body {
     width: 1.2rem;
     height: 1.2rem;
 }
+
+.box {
+    background-color: #fff;
+    min-height: 200px;
+    margin: 3.5rem auto 1rem;
+    border-radius: 5px;
+    padding: 0 2rem 2rem;
+    width: 85%;
+}
+
+.logo-wrap {
+    background-color: orange;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 16px;
+    position: relative; 
+    top: -1.5rem;
+}
+
+.flex-center{
+   display: flex;
+   justify-content: center;
+   align-items: center; 
+}
+
+.job-info {
+    color: var(--darkGrey);
+    font-weight: 400;
+}
+
+.job-info span {
+    margin: 0 0.5rem;
+}
+
+h1 {
+    color: var(--blackFont);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+}
+
+h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #5964E0;
+    margin-top: 2.5rem;
+}
+
