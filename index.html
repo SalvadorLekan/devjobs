@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
+        <div class="overlay"></div>
         <header>
             <div class="top-bg">
                 <div class="flex">
@@ -23,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="input-wrap">
+            <div class="input-wrap flex">
                 <input type="text" placeholder="Filter by title" class="search-input"/>
                 <div class="flex-center">
                     <img src="./assets/mobile/icon-filter.svg" alt="filter-icon"/>
@@ -34,7 +35,8 @@
             </div>
         </header>
         <main>
-            <!--<div class="box">
+            <section>
+                <!--<div class="box">
                 <div class="logo-wrap flex-center">
                     <img src="./assets/logos/scoot.svg" alt="company-logo" class="company-logo"/>
                 </div>
@@ -42,14 +44,24 @@
                 <h1>Senior Software Engineer</h1>
                 <p class="job-info">Scoot</p>
                 <h2>United Kingdom</h2>
-            </div>-->
+                </div>-->
+            </section>
+            
+            <form>
+                <div class="flex location-wrap">
+                    <img src="./assets/desktop/icon-location.svg" alt="location" id="location"/>
+                    <input type="text" placeholder="Filter By Location..." class="input-location"/>
+                </div>
+    
+                <div class="line"></div>
+                <div>
+                    <input type="checkbox"/>
+                    <label for="full-time">Full Time Only</label>  
+                </div>
+    
+                <button type="submit">Search</button>
+            </form>
         </main>
-
-        <div>
-
-            <img alt="location"/>
-            <input />
-        </div>
         <script src="./js/main.js"></script>
     </body>
 </html>

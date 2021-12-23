@@ -42,7 +42,6 @@ body {
 }
 
 .input-wrap {
-    display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #fff;
@@ -52,17 +51,20 @@ body {
     border-radius: 5px;
 }
 
-.search-input::placeholder {
+input::placeholder {
     font-size: 15px;
     font-weight: 400;
     color: var(--blackFont);
+    opacity: 50%;
 }
 
 input[type="radio"]{
     margin: 0 0.5rem;
 }
 
-.search-input {
+.search-input,
+.input-location,
+button  {
     border: none;
     background-color: inherit;
     outline: none;
@@ -81,7 +83,8 @@ input[type="radio"]{
     height: 1.2rem;
 }
 
-.box {
+.box,
+form {
     background-color: #fff;
     min-height: 200px;
     margin: 3.5rem auto 1rem;
@@ -126,4 +129,37 @@ h2 {
     color: #5964E0;
     margin-top: 2.5rem;
 }
+
+form {
+    padding: 2rem 1.5rem;
+}
+
+#location {
+    margin-right: 1rem;
+}
+
+.line {
+    height: 1px;
+    background-color: var(--darkGrey);
+    opacity: 20%;
+    margin: 1.3rem 0;
+}
+
+label {
+    font-weight: 700;
+    color: var(--blackFont);
+    margin-left: 1rem;
+}
+
+button {
+    width: -webkit-fill-available;
+    height: 3rem;
+    background-color: var(--mainBlue);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 5px;
+    margin-top: 1.3rem;
+    font-size: 15px;
+}
+
 

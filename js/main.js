@@ -1,7 +1,8 @@
-const mainPage = document.querySelector('main');
+const mainPage = document.querySelector('section');
+
 function renderJobs (data) {
     data.forEach( (job) => {
-        mainPage.innerHTML += `
+        mainPage.innerHTML = `
         <div class="box">
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
