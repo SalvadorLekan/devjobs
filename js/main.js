@@ -1,8 +1,12 @@
 const mainPage = document.querySelector('section');
+const submit = document.querySelector('#submit-search');
+const overlay = document.querySelector('.overlay');
+const form = document.querySelector('form');
+const filter = document.querySelector('.filter')
 
 function renderJobs (data) {
     data.forEach( (job) => {
-        mainPage.innerHTML = `
+        mainPage.innerHTML += `
         <div class="box">
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
@@ -14,7 +18,6 @@ function renderJobs (data) {
             </div>`
     }) 
 } 
-
 fetch('data.json')
 .then (function (response) {
     return response.json();
@@ -24,12 +27,14 @@ fetch('data.json')
     renderJobs(data);
 })
 
+/** Click listener to the funnel icon */
+filter.addEventListener ('click', () => {
+    overlay.style.display = 'block';
+    form.style.display = 'block';
+})
 
-
-
-
-
-
-
-         
-    
+/**Click listener to to submit search button */
+submit.addEventListener('click', () => {
+    overlay.style.display = 'none';
+    form.style.display = 'none';
+})
