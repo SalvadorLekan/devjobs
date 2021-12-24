@@ -3,10 +3,12 @@ const submit = document.querySelector('#submit-search');
 const overlay = document.querySelector('.overlay');
 const form = document.querySelector('form');
 const filter = document.querySelector('.filter')
+const searchTitle = document.querySelector('.search-input')
 
+//let title = searchTitle.value;
 function renderJobs (data) {
     data.forEach( (job) => {
-        mainPage.innerHTML += `
+       mainPage.innerHTML += `
         <div class="box">
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
@@ -18,23 +20,45 @@ function renderJobs (data) {
             </div>`
     }) 
 } 
-fetch('data.json')
-.then (function (response) {
-    return response.json();
-}) 
-.then (function (data) {
-    //console.log(data)
-    renderJobs(data);
-})
 
-/** Click listener to the funnel icon */
+getJobs();
+function getJobs () {
+    fetch('data.json')
+    .then (function (response) {
+        return response.json();
+    }) 
+    .then (function (data) {
+        //console.log(data)
+        renderJobs(data);
+    })
+}
+
+
+/** CLICK LISTENER TO THE FUNNEL ICON TO SHOW OTHER FILTER OPTIONS*/
 filter.addEventListener ('click', () => {
     overlay.style.display = 'block';
     form.style.display = 'block';
 })
 
-/**Click listener to to submit search button */
+/**CLICK LISTENER TO THE SUBMIT SEARCH BUTTON */
 submit.addEventListener('click', () => {
     overlay.style.display = 'none';
     form.style.display = 'none';
 })
+
+/***FILTER SEARCH VALUES */
+filterSearch();
+
+function filterSearch () {
+    searchTitle.addEventListener('input', () => {
+        const jobPosition = [...document.querySelectorAll('h1')]
+        let title = searchTitle.value;
+        jobPosition.forEach( (position) => {
+            if(position.textContent.toLowerCase().includes(title.toLowerCase())) {
+                position.parentElement.style.display = 'block';
+            } else {
+                position.parentElement.style.display = 'none';
+            }
+        })
+    } )
+}
