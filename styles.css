@@ -84,7 +84,7 @@ button  {
 }
 
 .box,
-form {
+.form {
     background-color: #fff;
     min-height: 200px;
     margin: 3.5rem auto 1rem;
@@ -130,7 +130,7 @@ h2 {
     margin-top: 2.5rem;
 }
 
-form {
+.form {
     padding: 2rem 1.5rem;
     position: absolute;
     top: 50%;

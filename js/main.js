@@ -1,9 +1,11 @@
 const mainPage = document.querySelector('section');
 const submit = document.querySelector('.submit-search');
 const overlay = document.querySelector('.overlay');
-const form = document.querySelector('form');
+const form = document.querySelector('.form');
 const filter = document.querySelector('.filter')
 const searchTitle = document.querySelector('.search-input')
+const inputLocation = document.querySelector('.input-location')
+const checkbox = document.querySelector('.checkbox')
 
 //let title = searchTitle.value;
 function renderJobs (data) {
@@ -33,7 +35,6 @@ function getJobs () {
     })
 }
 
-
 /** CLICK LISTENER TO THE FUNNEL ICON TO SHOW OTHER FILTER OPTIONS*/
 filter.addEventListener ('click', () => {
     overlay.style.display = 'block';
@@ -58,6 +59,23 @@ function filterSearch () {
                 position.parentElement.style.display = 'block';
             } else {
                 position.parentElement.style.display = 'none';
+            }
+        })
+    })
+}
+
+/**FILTER BY LOCATION */
+filterLocation();
+
+function filterLocation (){
+    submit.addEventListener('click', () => {
+        const jobLocations = [...document.querySelectorAll('h2')]
+        let locationValue = inputLocation.value;
+        jobLocations.forEach( (jobLocation) => {
+            if(jobLocation.textContent.toLowerCase().includes(locationValue.toLowerCase())){
+                jobLocation.parentElement.style.display = 'block';
+            }else {
+                jobLocation.parentElement.style.display = 'none'
             }
         })
     })
