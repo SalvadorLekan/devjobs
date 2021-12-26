@@ -1,5 +1,5 @@
 const mainPage = document.querySelector('section');
-const submit = document.querySelector('#submit-search');
+const submit = document.querySelector('.submit-search');
 const overlay = document.querySelector('.overlay');
 const form = document.querySelector('form');
 const filter = document.querySelector('.filter')
@@ -60,5 +60,5 @@ function filterSearch () {
                 position.parentElement.style.display = 'none';
             }
         })
-    } )
+    })
 }
