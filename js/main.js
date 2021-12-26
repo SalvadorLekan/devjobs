@@ -7,6 +7,9 @@ const searchTitle = document.querySelector('.search-input')
 const inputLocation = document.querySelector('.input-location')
 const checkbox = document.querySelector('.checkbox');
 
+
+const detailContainer = document.querySelector('.detail-container')
+
 //let title = searchTitle.value;
 function renderJobs (data) {
     data.forEach( (job) => {
@@ -26,14 +29,21 @@ function renderJobs (data) {
             const allJobs = [...mainPage.children]  
             allJobs.forEach( (jobs) => {
                 jobs.addEventListener('click', () => {
-                    //modal.style.display = 'flex';
-                    //showCountryDetails(country);
-                    filter.style.display = 'none  '
+                    detailContainer.style.display = 'block'
+                    getDetails(job);
                 });
             })
     }) 
 }
 
+function getDetails (job) {
+    detailContainer.innerHTML += `
+    <div class="detail">
+        <p class="blue">${job.description}</p>
+        <p class="blue">${job.apply}</p>
+    </div>
+    `
+}
 
 getJobs();
 function getJobs () {
