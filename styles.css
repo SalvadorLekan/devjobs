@@ -112,7 +112,7 @@ button  {
     font-weight: 400;
 }
 
-.job-info span {
+.job-info .dot {
     margin: 0 0.5rem;
 }
 

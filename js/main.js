@@ -1,11 +1,11 @@
-const mainPage = document.querySelector('section');
+const mainPage = document.querySelector('.main-page');
 const submit = document.querySelector('.submit-search');
 const overlay = document.querySelector('.overlay');
 const form = document.querySelector('.form');
 const filter = document.querySelector('.filter')
 const searchTitle = document.querySelector('.search-input')
 const inputLocation = document.querySelector('.input-location')
-const checkbox = document.querySelector('.checkbox')
+const checkbox = document.querySelector('.checkbox');
 
 //let title = searchTitle.value;
 function renderJobs (data) {
@@ -15,13 +15,25 @@ function renderJobs (data) {
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
                 </div>
-                <p class="job-info">${job.postedAt}<span>.</span>${job.contract}</p>
+                <p class="job-info">${job.postedAt}<span class="dot">.</span></p>
+                <p class="red">${job.contract}</p>
+                
                 <h1>${job.position}</h1>
                 <p class="job-info">${job.company}</p>
                 <h2>${job.location}</h2>
             </div>`
+
+            const allJobs = [...mainPage.children]  
+            allJobs.forEach( (jobs) => {
+                jobs.addEventListener('click', () => {
+                    //modal.style.display = 'flex';
+                    //showCountryDetails(country);
+                    filter.style.display = 'none  '
+                });
+            })
     }) 
-} 
+}
+
 
 getJobs();
 function getJobs () {
@@ -79,4 +91,25 @@ function filterLocation (){
             }
         })
     })
+}
+
+/*FILTER JOB BY CONTRACT (USING CHECKBOX) */
+filterJobContract();
+
+function filterJobContract () {
+    submit.addEventListener('click', () => {
+        const jobContract = [...document.querySelectorAll('.red')]
+        if (checkbox.checked) {
+            console.log(checkbox.checked)
+            jobContract.forEach( (contract) => {
+                if (contract.textContent.includes('Full Time')){
+                    contract.parentElement.style.display = 'block';
+                }else {
+                    contract.parentElement.style.display = 'none'
+                }
+            })
+        }
+    })
+
+   
 }
