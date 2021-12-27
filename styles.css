@@ -11,12 +11,17 @@
     --darkGrey :  #6E8098;
     --fontFamily: 'Kumbh Sans', sans-serif;
     --blackFont: #19202D;
+    --lightBlue: #e9ebfd;
 }
 
 body {
     height: 100%;
     background-color: var(--greyColor);
     font-family: var(--fontFamily);
+}
+
+a {
+    text-decoration: none;
 }
 
 .top-bg {
@@ -201,6 +206,44 @@ button {
   .hide-mobile {
     display: none;
 }
+
+/** STYLES FOR THE INNER PAGE*/
+    .details-box {
+        width: 90%;
+        background-color: #fff;
+        margin: -1rem auto 2rem;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+
+    .company-logo-inner {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 20px;
+        background-color: brown;
+        margin: -2rem auto 0;
+    }
+
+    .company-site {
+        width: 10rem;
+        background-color: var(--lightBlue);
+    }
+
+    .company-site a {
+        color: var(--mainBlue);
+    }
+
+    .details-box p {
+        text-align: center;
+    }
+
+    .company-name {
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
 
   @media only screen and (min-width: 700px) {
     .hide-mobile {
