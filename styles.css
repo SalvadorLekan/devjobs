@@ -245,6 +245,59 @@ button {
         margin: 0.5rem 0;
     }
 
+    .description-container,
+    .footer {
+        background-color: #fff;
+        width: 90%;
+        margin: auto;
+        border-radius: 5px;
+        padding: 2.5rem 2rem ;
+    }
+
+    .notes, 
+    li {
+        opacity: 70%;
+        line-height: 1.7;
+    }
+
+    .job-location {
+        margin-top: unset;
+    }
+
+    .apply-now {
+        margin: 3rem 0 2rem;
+    }
+
+    .apply-now  a,
+    .footer button a {
+        color: #fff;
+    }
+
+    .black-h2 {
+        color: var(--blackFont);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    ul, 
+    ol{
+        padding-left: 1rem;
+        margin: 1rem 0;
+    }
+
+    li {
+        padding-left: 1.5rem;
+    }
+
+    .footer {
+        margin-top: 3rem;
+    }
+
+    .footer button {
+        margin-top: unset;
+    }
+
+
   @media only screen and (min-width: 700px) {
     .hide-mobile {
         display: block;
@@ -293,6 +346,49 @@ button {
         width: 340px;
 
     }
+
+    /* STYLES FOR INNER PAGE**/
+    .details-box{
+        justify-content: space-between;
+        padding-bottom: unset;
+        height: 8rem;
+    }
+    .details-box>div {
+        display: flex;
+        width: inherit;
+        justify-content: space-between;
+    }
+
+    .company-logo-inner {
+        margin: unset;
+        margin-right: 2rem;
+        border-radius: unset;
+        border-bottom-left-radius: 10px;
+        height: inherit;
+        width: 8rem;
+    }
+
+    .company-wrap {
+        display: flex;
+    }
+
+    .company-name {
+        font-size: 1.4rem;
+        margin-top: 2rem;
+    }
+
+    .details-box p {
+        text-align: unset;
+    }
+
+    .company-site{
+        margin-top: 2.5rem;
+    }
+
+
+
+
+
   }
 
   
