@@ -18,9 +18,10 @@ function renderJobs (data) {
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
                 </div>
-                <p class="job-info">${job.postedAt}<span class="dot">.</span></p>
-                <p class="red">${job.contract}</p>
-                
+                <p class="job-info">${job.postedAt}
+                    <span class="dot">.</span>
+                    <span class="red">${job.contract}</span>
+                </p>
                 <h1>${job.position}</h1>
                 <p class="job-info">${job.company}</p>
                 <h2>${job.location}</h2>
@@ -41,7 +42,7 @@ function getDetails (job) {
     <div class="detail">
         <p class="blue">${job.description}</p>
         <p class="blue">${job.apply}</p>
-    </div>
+    </div> 
     `
 }
 
