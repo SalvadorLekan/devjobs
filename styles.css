@@ -189,14 +189,8 @@ button {
     width: 100vw
   }
 
-  .detail-container {
+  .inner-page {
       display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: hotpink;
   }
 
   .blue {
@@ -290,6 +284,7 @@ button {
     }
 
     .footer {
+        width: 100vw;
         margin-top: 3rem;
     }
 
@@ -368,6 +363,10 @@ button {
         width: 8rem;
     }
 
+    .inner-logo {
+        height: 3rem;
+    }
+
     .company-wrap {
         display: flex;
     }
@@ -385,7 +384,39 @@ button {
         margin-top: 2.5rem;
     }
 
+    .description {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
 
+    h1 {
+        font-size: 1.7rem;
+    }
+
+   .description .apply-now {
+        width: 8rem;
+    }
+
+    .footer .black-h2 {
+        font-size: 1.4rem;
+        margin: 0 0 0.5rem  0;
+    }
+
+    .footer {
+        margin-bottom: 8rem;
+    }
+
+    .footer-tab {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer button {
+        width: 8rem;
+    }
 
 
 
