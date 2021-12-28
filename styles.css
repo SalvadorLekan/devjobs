@@ -309,7 +309,7 @@ button {
     }
 
     .form {
-        display: flex !important;
+       /* display: flex !important;*/
         align-items: center;
         justify-content: center;
         height: auto;

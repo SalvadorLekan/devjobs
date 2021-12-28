@@ -1,4 +1,4 @@
-const mainPage = document.querySelector('.main-page');
+const mainPage = document.querySelector('.grid-container');
 const submit = document.querySelector('.submit-search');
 const overlay = document.querySelector('.overlay');
 const form = document.querySelector('.form');
@@ -35,6 +35,7 @@ function renderJobs (data) {
                     innerPage.style.display = 'block';
                     mainPage.style.display = 'none'
                     inputWrap.style.display = 'none'
+                    //form.syle.display = 'none'
                     getDetails(job);
                 });
             })
