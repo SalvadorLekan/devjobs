@@ -43,7 +43,7 @@ function renderJobs (data) {
 }
 
 function getDetails (job) {
-    detailContainer.innerHTML += `
+    detailContainer.innerHTML = `
     <div>
     <div class="detail">
         <div class="details-box">
