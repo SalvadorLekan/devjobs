@@ -1,22 +1,35 @@
-const mainPage = document.querySelector('.grid-container');
-const submit = document.querySelector('.submit-search');
-const overlay = document.querySelector('.overlay');
-const form = document.querySelector('.form');
-const filter = document.querySelector('.filter')
-const searchTitle = document.querySelector('.search-input')
-const inputLocation = document.querySelector('.input-location')
-const checkbox = document.querySelector('.checkbox');
-const innerPage = document.querySelector('.inner-page')
+const mainPage = document.querySelector(".grid-container");
+const submit = document.querySelector(".submit-search");
+const overlay = document.querySelector(".overlay");
+const form = document.querySelector(".form");
+const filter = document.querySelector(".filter");
+const searchTitle = document.querySelector(".search-input");
+const inputLocation = document.querySelector(".input-location");
+const checkbox = document.querySelector(".checkbox");
+const innerPage = document.querySelector(".inner-page");
 //const mainPage = document.querySelector('.main-page')
 
-const inputWrap = document.querySelector('.input-wrap')
-const detailContainer = document.querySelector('.detail-container')
+const inputWrap = document.querySelector(".input-wrap");
+const detailContainer = document.querySelector(".detail-container");
+// move json out of the function
+let data = [];
+let searchQuery = "";
+let locationQuery = "";
+let isFullTimeOnly = false;
 
 //let title = searchTitle.value;
-function renderJobs (data) {
-    data.forEach( (job) => {
-       mainPage.innerHTML += `
-        <div class="box">
+function renderJobs() {
+  const filtered = data.filter((job) => {
+    return (
+      job.location.toLowerCase().includes(locationQuery.toLowerCase()) &&
+      job.position.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (!isFullTimeOnly || job.contract === "Full Time")
+    );
+  });
+  mainPage.innerHTML = "";
+  filtered.forEach((job) => {
+    mainPage.innerHTML += `
+        <div data-key=${job.id} class="box">
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
                 </div>
@@ -27,23 +40,25 @@ function renderJobs (data) {
                 <h1>${job.position}</h1>
                 <p class="job-info">${job.company}</p>
                 <h2>${job.location}</h2>
-            </div>`
+            </div>`;
 
-            const allJobs = [...mainPage.children]  
-            allJobs.forEach( (jobs) => {
-                jobs.addEventListener('click', () => {
-                    innerPage.style.display = 'block';
-                    mainPage.style.display = 'none'
-                    inputWrap.style.display = 'none'
-                    //form.syle.display = 'none'
-                    getDetails(job);
-                });
-            })
-    }) 
+    const allJobs = [...mainPage.children];
+    allJobs.forEach((jobs) => {
+      jobs.addEventListener("click", function (e) {
+        innerPage.style.display = "block";
+        mainPage.style.display = "none";
+        inputWrap.style.display = "none";
+        // form.syle.display = "none";
+        getDetails(this.dataset.key);
+      });
+    });
+  });
 }
 
-function getDetails (job) {
-    detailContainer.innerHTML = `
+function getDetails(id) {
+  const job = data.find((item) => item.id == id);
+  console.log({ job, data });
+  detailContainer.innerHTML += `
     <div>
     <div class="detail">
         <div class="details-box">
@@ -112,82 +127,79 @@ function getDetails (job) {
         </div>
     </div>
     </div>
-    `
+    `;
 }
 
 getJobs();
-function getJobs () {
-    fetch('data.json')
-    .then (function (response) {
-        return response.json();
-    }) 
-    .then (function (data) {
-        //console.log(data)
-        renderJobs(data);
+function getJobs() {
+  fetch("data.json")
+    .then(function (response) {
+      return response.json();
     })
+    .then(function (res) {
+      //console.log(data)
+      data = res;
+      renderJobs();
+    });
 }
 
 /** CLICK LISTENER TO THE FUNNEL ICON TO SHOW OTHER FILTER OPTIONS*/
-filter.addEventListener ('click', () => {
-    overlay.style.display = 'block';
-    form.style.display = 'block';
-})
+filter.addEventListener("click", () => {
+  overlay.style.display = "block";
+  form.style.display = "block";
+});
 
 /**CLICK LISTENER TO THE SUBMIT SEARCH BUTTON */
-submit.addEventListener('click', () => {
-    overlay.style.display = 'none';
-    form.style.display = 'none';
-})
+submit.addEventListener("click", () => {
+  overlay.style.display = "none";
+  form.style.display = "none";
+});
 
 /***FILTER SEARCH VALUES */
 filterSearch();
 
-function filterSearch () {
-    searchTitle.addEventListener('input', () => {
-        const jobPosition = [...document.querySelectorAll('h1')]
-        let title = searchTitle.value;
-        jobPosition.forEach( (position) => {
-            if(position.textContent.toLowerCase().includes(title.toLowerCase())) {
-                position.parentElement.style.display = 'block';
-            } else {
-                position.parentElement.style.display = 'none';
-            }
-        })
-    })
+function filterSearch() {
+  searchTitle.addEventListener("input", () => {
+    // const jobPosition = [...document.querySelectorAll("h1")];
+    // let title = searchTitle.value;
+    searchQuery = searchTitle.value;
+    renderJobs();
+    // jobPosition.forEach((position) => {
+    //   if (position.textContent.toLowerCase().includes(title.toLowerCase())) {
+    //     position.parentElement.style.display = "block";
+    //   } else {
+    //     position.parentElement.style.display = "none";
+    //   }
+    // });
+  });
 }
 
 /**FILTER BY LOCATION */
 filterLocation();
 
-function filterLocation (){
-    submit.addEventListener('click', () => {
-        const jobLocations = [...document.querySelectorAll('h2')]
-        let locationValue = inputLocation.value;
-        jobLocations.forEach( (jobLocation) => {
-            if(jobLocation.textContent.toLowerCase().includes(locationValue.toLowerCase())){
-                jobLocation.parentElement.style.display = 'block';
-            }else {
-                jobLocation.parentElement.style.display = 'none'
-            }
-        })
-    })
+function filterLocation() {
+  submit.addEventListener("click", () => {
+    // const jobLocations = [...document.querySelectorAll("h2")];
+    locationQuery = inputLocation.value;
+
+    renderJobs();
+    // jobLocations.forEach((jobLocation) => {
+    //   if (jobLocation.textContent.toLowerCase().includes(locationValue.toLowerCase())) {
+    //     jobLocation.parentElement.style.display = "block";
+    //   } else {
+    //     jobLocation.parentElement.style.display = "none";
+    //   }
+    // });
+  });
 }
 
 /*FILTER JOB BY CONTRACT (USING CHECKBOX) */
 filterJobContract();
 
-function filterJobContract () {
-    submit.addEventListener('click', () => {
-        const jobContract = [...document.querySelectorAll('.red')]
-        if (checkbox.checked) {
-            console.log(checkbox.checked)
-            jobContract.forEach( (contract) => {
-                if (contract.textContent.includes('Full Time')){
-                    contract.parentElement.style.display = 'block';
-                }else {
-                    contract.parentElement.style.display = 'none'
-                }
-            })
-        }
-    })  
+function filterJobContract() {
+  submit.addEventListener("click", () => {
+    const jobContract = [...document.querySelectorAll(".red")];
+    isFullTimeOnly = checkbox.checked;
+    renderJobs();
+  });
 }
