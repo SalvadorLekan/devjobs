@@ -7,11 +7,9 @@ const searchTitle = document.querySelector(".search-input");
 const inputLocation = document.querySelector(".input-location");
 const checkbox = document.querySelector(".checkbox");
 const innerPage = document.querySelector(".inner-page");
-//const mainPage = document.querySelector('.main-page')
-
 const inputWrap = document.querySelector(".input-wrap");
 const detailContainer = document.querySelector(".detail-container");
-// move json out of the function
+// MOVE JSON OUT OF THE FUNCTION
 let data = [];
 let searchQuery = "";
 let locationQuery = "";
@@ -26,6 +24,7 @@ function renderJobs() {
       (!isFullTimeOnly || job.contract === "Full Time")
     );
   });
+
   mainPage.innerHTML = "";
   filtered.forEach((job) => {
     mainPage.innerHTML += `
@@ -137,8 +136,7 @@ function getJobs() {
       return response.json();
     })
     .then(function (res) {
-      //console.log(data)
-      data = res;
+      data = res;      //keeping the responses in the data array
       renderJobs();
     });
 }
@@ -149,54 +147,33 @@ filter.addEventListener("click", () => {
   form.style.display = "block";
 });
 
-/**CLICK LISTENER TO THE SUBMIT SEARCH BUTTON */
+/**CLICK LISTENER TO THE SUBMIT SEARCH BUTTON(ON OVERLAY PAGE) */
 submit.addEventListener("click", () => {
   overlay.style.display = "none";
   form.style.display = "none";
 });
 
-/***FILTER SEARCH VALUES */
-filterSearch();
-
-function filterSearch() {
+/***FILTER SEARCH BY JOB TITLE */
+filterByTitle();
+function filterByTitle() {
   searchTitle.addEventListener("input", () => {
-    // const jobPosition = [...document.querySelectorAll("h1")];
-    // let title = searchTitle.value;
     searchQuery = searchTitle.value;
     renderJobs();
-    // jobPosition.forEach((position) => {
-    //   if (position.textContent.toLowerCase().includes(title.toLowerCase())) {
-    //     position.parentElement.style.display = "block";
-    //   } else {
-    //     position.parentElement.style.display = "none";
-    //   }
-    // });
   });
 }
 
-/**FILTER BY LOCATION */
-filterLocation();
-
-function filterLocation() {
+/**FILTER SEARCH BY LOCATION */
+filterByLocation();
+function filterByLocation() {
   submit.addEventListener("click", () => {
-    // const jobLocations = [...document.querySelectorAll("h2")];
     locationQuery = inputLocation.value;
-
     renderJobs();
-    // jobLocations.forEach((jobLocation) => {
-    //   if (jobLocation.textContent.toLowerCase().includes(locationValue.toLowerCase())) {
-    //     jobLocation.parentElement.style.display = "block";
-    //   } else {
-    //     jobLocation.parentElement.style.display = "none";
-    //   }
-    // });
   });
 }
 
-/*FILTER JOB BY CONTRACT (USING CHECKBOX) */
-filterJobContract();
-
-function filterJobContract() {
+/*FILTER SEARCH JOB BY CONTRACT (USING CHECKBOX) */
+filterByContract();
+function filterByContract() {
   submit.addEventListener("click", () => {
     const jobContract = [...document.querySelectorAll(".red")];
     isFullTimeOnly = checkbox.checked;
