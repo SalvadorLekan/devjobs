@@ -28,7 +28,7 @@ function renderJobs() {
   mainPage.innerHTML = "";
   filtered.forEach((job) => {
     mainPage.innerHTML += `
-        <div data-key=${job.id} class="box">
+    <div data-key=${job.id} class="box">
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
                 </div>
@@ -39,15 +39,16 @@ function renderJobs() {
                 <h1>${job.position}</h1>
                 <p class="job-info">${job.company}</p>
                 <h2>${job.location}</h2>
-            </div>`;
+                </div>
+        `;
 
     const allJobs = [...mainPage.children];
     allJobs.forEach((jobs) => {
       jobs.addEventListener("click", function (e) {
-        innerPage.style.display = "block";
-        mainPage.style.display = "none";
-        inputWrap.style.display = "none";
-        // form.syle.display = "none";
+        //innerPage.style.display = "block";
+        //mainPage.style.display = "none";
+        //inputWrap.style.display = "none";
+        //form.syle.display = "none";
         getDetails(this.dataset.key);
       });
     });
