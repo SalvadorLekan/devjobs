@@ -63,7 +63,7 @@ function getDetails(id) {
         <div class="details-box">
             <div>
                 <div class="company-wrap">
-                    <div class="company-logo-inner flex-center" style="style="background-color: ${job.logoBackground};">
+                    <div class="company-logo-inner flex-center" style="background-color: ${job.logoBackground};">
                         <img src="${job.logo}" alt="company-logo" class="inner-logo"/>
                     </div>
                     <div>

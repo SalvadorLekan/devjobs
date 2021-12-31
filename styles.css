@@ -216,7 +216,6 @@ button {
         width: 4rem;
         height: 4rem;
         border-radius: 20px;
-        background-color: brown;
         margin: -2rem auto 0;
     }
 
@@ -364,7 +363,7 @@ button {
     }
 
     .inner-logo {
-        height: 3rem;
+        height: 2rem;
     }
 
     .company-wrap {
