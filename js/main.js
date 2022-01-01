@@ -28,7 +28,7 @@ function renderJobs() {
   mainPage.innerHTML = "";
   filtered.forEach((job) => {
     mainPage.innerHTML += `
-    <div data-key=${job.id} class="box">
+    <a href="details#${job.id}" data-key=${job.id} class="box">
                 <div class="logo-wrap flex-center" style="background-color: ${job.logoBackground};">
                     <img src="${job.logo}" alt="company-logo" class="company-logo"/>
                 </div>
@@ -39,25 +39,24 @@ function renderJobs() {
                 <h1>${job.position}</h1>
                 <p class="job-info">${job.company}</p>
                 <h2>${job.location}</h2>
-                </div>
+                </a>
         `;
 
-    const allJobs = [...mainPage.children];
-    allJobs.forEach((jobs) => {
-      jobs.addEventListener("click", function (e) {
-        //innerPage.style.display = "block";
-        //mainPage.style.display = "none";
-        //inputWrap.style.display = "none";
-        //form.syle.display = "none";
-        getDetails(this.dataset.key);
-      });
-    });
+    // const allJobs = [...mainPage.children];
+    // allJobs.forEach((jobs) => {
+    //   jobs.addEventListener("click", function (e) {
+    //     //innerPage.style.display = "block";
+    //     //mainPage.style.display = "none";
+    //     //inputWrap.style.display = "none";
+    //     //form.syle.display = "none";
+    //     getDetails(this.dataset.key);
+    //   });
+    // });
   });
 }
 
 function getDetails(id) {
   const job = data.find((item) => item.id == id);
-  console.log({ job, data });
   detailContainer.innerHTML += `
     <div>
     <div class="detail">
@@ -137,7 +136,7 @@ function getJobs() {
       return response.json();
     })
     .then(function (res) {
-      data = res;      //keeping the responses in the data array
+      data = res; //keeping the responses in the data array
       renderJobs();
     });
 }
